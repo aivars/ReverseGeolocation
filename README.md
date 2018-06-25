@@ -1,6 +1,6 @@
 # ReverseGeolocation
 
-## NB! Xcode 10 and iOS12 required.
+### NB! Xcode 10 and iOS12 required.
 Reverse geolocation app for MapKit implementation tests and demonstration.
 When user moves the map, location data for map center is updated and by the end of the moving available adress infromation is displayed as human readable location adress.
 
