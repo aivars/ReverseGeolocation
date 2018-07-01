@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapviewController.swift
 //  ReverseGeolocation
 //
 //  Created by Aivars Meijers on 23/06/2018.
@@ -10,16 +10,19 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class MapviewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var locationLabel: UILabel!
+
     @IBOutlet weak var pinImage: UIImageView!
-    @IBOutlet weak var addresView: UIView!
+    @IBOutlet weak var addresView: RoundedView!
+    @IBOutlet weak var addressLbl: UILabel!
+    
     
     var locationManager = CLLocationManager()
     var geocoder = CLGeocoder()
     private var mapChangedFromUserInteraction = false
+
     
     
     override func viewDidLoad() {
@@ -64,36 +67,35 @@ class ViewController: UIViewController {
     
     func updateUi() {
         
-        locationLabel.text = "Move the map to update location adress"
+        addressLbl.text = "Move the map to update location adress"
         
-        addresView.layer.cornerRadius = 10
-        addresView.layer.shadowColor = UIColor.black.cgColor
-        addresView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        addresView.layer.masksToBounds = false
-        addresView.layer.shadowRadius = 4.0
-        addresView.layer.shadowOpacity = 0.2
     }
     
     private func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
         // Update View
         if let error = error {
             print("Unable to Reverse Geocode Location (\(error))")
-            locationLabel.text = "Unable to Find Address for Location"
+            addressLbl.text = "Unable to Find Address for Location"
             
         } else {
             if let placemarks = placemarks, let placemark = placemarks.first {
-                locationLabel.text = placemark.compactAddress
+                addressLbl.text = placemark.compactAddress
             } else {
-                locationLabel.text = "No Matching Addresses Found"
+                addressLbl.text = "No Matching Addresses Found"
             }
         }
+    }
+    
+    private func hideAddressView() {
+        addresView.isHidden = true
+        addressLbl.text = ""
     }
     
     
 
 }
 
-extension ViewController: CLLocationManagerDelegate {
+extension MapviewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -109,7 +111,7 @@ extension ViewController: CLLocationManagerDelegate {
 
 }
 
-extension ViewController: MKMapViewDelegate {
+extension MapviewController: MKMapViewDelegate {
     
     private func mapViewRegionDidChangeFromUserInteraction() -> Bool {
         let view = self.mapView.subviews[0]
@@ -130,8 +132,7 @@ extension ViewController: MKMapViewDelegate {
             // user changed map region, hide location untill will move again
             mapView.showsUserLocation = false
             //hide location label while map moving
-            addresView.isHidden = true
-            locationLabel.text = ""
+            hideAddressView()
             
         }
     }
@@ -162,11 +163,11 @@ extension CLPlacemark {
             var result = name
             
             if let city = locality {
-                result += ", \(city)"
+                result += ",\n \(city)"
             }
             
             if let country = country {
-                result += ", \(country)"
+                result += ",\n \(country)"
             }
             
             return result
