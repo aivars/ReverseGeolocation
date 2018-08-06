@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,16 +47,33 @@
                                     <constraint firstAttribute="width" constant="200" id="pk3-Fn-lHn"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4h-PM-PFw" customClass="RoundedButton" customModule="ReverseGeolocation" customModuleProvider="target">
+                                <rect key="frame" x="220" y="294" width="67" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qyo-KQ-rZG"/>
+                                    <constraint firstAttribute="width" constant="67" id="ut0-a7-6Ex"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                                <state key="normal" title="Directions">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="getDirections:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MTi-if-c3g"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SEb-Ie-DfD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-19" id="22Z-Ww-Tak"/>
                             <constraint firstItem="SEb-Ie-DfD" firstAttribute="top" secondItem="8DM-JM-eBC" secondAttribute="bottom" constant="8" id="7Sc-1J-MaM"/>
+                            <constraint firstItem="v4h-PM-PFw" firstAttribute="top" secondItem="SBw-T0-RsQ" secondAttribute="bottom" constant="11.5" id="Fph-bb-jUr"/>
                             <constraint firstItem="jl3-LR-R2m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Wtf-qM-N8j"/>
                             <constraint firstAttribute="trailing" secondItem="jl3-LR-R2m" secondAttribute="trailing" id="ZGU-kO-fzm"/>
                             <constraint firstItem="8DM-JM-eBC" firstAttribute="centerX" secondItem="SEb-Ie-DfD" secondAttribute="centerX" id="ahm-QZ-4FG"/>
                             <constraint firstItem="jl3-LR-R2m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dme-FF-wQ8"/>
                             <constraint firstItem="jl3-LR-R2m" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hYj-bF-3KR"/>
+                            <constraint firstItem="v4h-PM-PFw" firstAttribute="leading" secondItem="SEb-Ie-DfD" secondAttribute="trailing" constant="12.5" id="pqV-5x-ff6"/>
                             <constraint firstItem="SEb-Ie-DfD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q9i-Ve-JbD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -64,6 +81,7 @@
                     <connections>
                         <outlet property="addresView" destination="8DM-JM-eBC" id="qAW-oD-TpX"/>
                         <outlet property="addressLbl" destination="SBw-T0-RsQ" id="GeV-6V-06U"/>
+                        <outlet property="getDirectionsBtn" destination="v4h-PM-PFw" id="OC2-wD-lmC"/>
                         <outlet property="mapView" destination="jl3-LR-R2m" id="GfL-FT-KvS"/>
                         <outlet property="pinImage" destination="SEb-Ie-DfD" id="UGU-EZ-JKm"/>
                     </connections>
